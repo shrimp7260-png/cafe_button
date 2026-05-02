@@ -11,14 +11,14 @@
       <section id="titleScreen" class="screen title-screen">
         <div class="panel title-panel">
           <h1>Cafe Kitchen</h1>
-          <p>材料を選んで、注文どおりのドリンクを提供しよう</p>
+          <p>注文どおりの材料を選んで提供しよう</p>
           <button id="startButton" class="action-button serve">スタート</button>
           <button id="menuButton" class="action-button normal">メニュー</button>
           <button id="ruleButton" class="action-button reset">ルール</button>
         </div>
       </section>
 
-      <section id="gameScreen" class="screen hidden">
+      <section id="gameScreen" class="screen game-screen hidden">
         <header class="top-bar">
           <div>
             <span class="label">スコア</span>
@@ -35,36 +35,45 @@
         </header>
 
         <section class="panel order-panel">
-          <h2>現在の注文</h2>
-          <p id="orderText" class="order-name">アメリカーノ</p>
+          <div>
+            <span class="mini-title">注文</span>
+            <p id="orderText" class="order-name">アメリカーノ</p>
+          </div>
           <p id="customText" class="custom-text">カスタム: なし</p>
           <p id="messageText" class="message"></p>
         </section>
 
         <section class="panel selected-panel">
-          <h2>選択中の材料</h2>
+          <span class="mini-title">選択中</span>
           <div id="selectedList" class="chip-list">なし</div>
         </section>
 
         <section class="panel operation-panel">
-          <h2>材料</h2>
-          <div id="ingredientButtons" class="ingredient-grid"></div>
-          <button id="serveButton" class="action-button serve">提供</button>
-          <button id="resetButton" class="action-button reset">リセット</button>
+          <div class="section-head">
+            <h2>材料</h2>
+            <span>タップで選択</span>
+          </div>
+          <div class="ingredient-scroll">
+            <div id="ingredientButtons" class="ingredient-grid"></div>
+          </div>
+          <div class="command-row">
+            <button id="serveButton" class="action-button serve">提供</button>
+            <button id="resetButton" class="action-button reset">リセット</button>
+          </div>
         </section>
 
         <section class="panel recipe-panel">
-          <h2>レシピ一覧</h2>
+          <h2>レシピ</h2>
           <div id="recipeList" class="recipe-list"></div>
         </section>
 
         <div id="feedback" class="feedback hidden">Good!</div>
       </section>
 
-      <section id="menuScreen" class="screen hidden">
+      <section id="menuScreen" class="screen title-screen hidden">
         <div class="panel title-panel">
           <h1>Menu</h1>
-          <p>難易度を選んでからスタートしてください</p>
+          <p>難易度を選んでください</p>
           <div class="difficulty-row">
             <button class="difficulty-button" data-difficulty="Easy">Easy</button>
             <button class="difficulty-button active" data-difficulty="Normal">Normal</button>
@@ -74,7 +83,7 @@
         </div>
       </section>
 
-      <section id="ruleScreen" class="screen hidden">
+      <section id="ruleScreen" class="screen title-screen hidden">
         <div class="panel title-panel rule-panel">
           <h1>Rule</h1>
           <p>注文の基本レシピに、カスタム材料を追加して提供します。</p>
@@ -84,7 +93,7 @@
         </div>
       </section>
 
-      <section id="resultScreen" class="screen hidden">
+      <section id="resultScreen" class="screen title-screen hidden">
         <div class="panel title-panel">
           <h1>Result</h1>
           <p>最終スコア: <strong id="finalScoreText">0</strong></p>

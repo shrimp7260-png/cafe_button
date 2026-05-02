@@ -60,6 +60,10 @@ const maxComboText = document.querySelector("#maxComboText");
 const correctSound = document.querySelector("#correctSound");
 const wrongSound = document.querySelector("#wrongSound");
 
+function setAppHeight() {
+  document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+}
+
 function randomItem(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
@@ -295,6 +299,10 @@ document.querySelectorAll(".difficulty-button").forEach((button) => {
   });
 });
 
+window.addEventListener("resize", setAppHeight);
+window.addEventListener("orientationchange", setAppHeight);
+
+setAppHeight();
 renderRecipeList();
 makeNewOrder();
 updateView();
