@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cafe Kitchen</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game">
+      <section id="titleScreen" class="screen title-screen">
+        <div class="panel title-panel">
+          <h1>Cafe Kitchen</h1>
+          <p>材料を選んで、注文どおりのドリンクを提供しよう</p>
+          <button id="startButton" class="action-button serve">スタート</button>
+          <button id="menuButton" class="action-button normal">メニュー</button>
+          <button id="ruleButton" class="action-button reset">ルール</button>
+        </div>
+      </section>
+
+      <section id="gameScreen" class="screen hidden">
+        <header class="top-bar">
+          <div>
+            <span class="label">スコア</span>
+            <strong id="scoreText">0</strong>
+          </div>
+          <div>
+            <span class="label">コンボ</span>
+            <strong id="comboText">0</strong>
+          </div>
+          <div>
+            <span class="label">時間</span>
+            <strong id="timerText">60</strong>
+          </div>
+        </header>
+
+        <section class="panel order-panel">
+          <h2>現在の注文</h2>
+          <p id="orderText" class="order-name">アメリカーノ</p>
+          <p id="customText" class="custom-text">カスタム: なし</p>
+          <p id="messageText" class="message"></p>
+        </section>
+
+        <section class="panel selected-panel">
+          <h2>選択中の材料</h2>
+          <div id="selectedList" class="chip-list">なし</div>
+        </section>
+
+        <section class="panel operation-panel">
+          <h2>材料</h2>
+          <div id="ingredientButtons" class="ingredient-grid"></div>
+          <button id="serveButton" class="action-button serve">提供</button>
+          <button id="resetButton" class="action-button reset">リセット</button>
+        </section>
+
+        <section class="panel recipe-panel">
+          <h2>レシピ一覧</h2>
+          <div id="recipeList" class="recipe-list"></div>
+        </section>
+
+        <div id="feedback" class="feedback hidden">Good!</div>
+      </section>
+
+      <section id="menuScreen" class="screen hidden">
+        <div class="panel title-panel">
+          <h1>Menu</h1>
+          <p>難易度を選んでからスタートしてください</p>
+          <div class="difficulty-row">
+            <button class="difficulty-button" data-difficulty="Easy">Easy</button>
+            <button class="difficulty-button active" data-difficulty="Normal">Normal</button>
+            <button class="difficulty-button" data-difficulty="Hard">Hard</button>
+          </div>
+          <button id="menuBackButton" class="action-button reset">戻る</button>
+        </div>
+      </section>
+
+      <section id="ruleScreen" class="screen hidden">
+        <div class="panel title-panel rule-panel">
+          <h1>Rule</h1>
+          <p>注文の基本レシピに、カスタム材料を追加して提供します。</p>
+          <p>正解するとコンボ数だけスコアが入り、時間が1秒増えます。</p>
+          <p>間違えるとコンボが0に戻ります。</p>
+          <button id="ruleBackButton" class="action-button reset">戻る</button>
+        </div>
+      </section>
+
+      <section id="resultScreen" class="screen hidden">
+        <div class="panel title-panel">
+          <h1>Result</h1>
+          <p>最終スコア: <strong id="finalScoreText">0</strong></p>
+          <p>最大コンボ: <strong id="maxComboText">0</strong></p>
+          <button id="retryButton" class="action-button serve">もう一度</button>
+          <button id="titleBackButton" class="action-button reset">タイトルへ戻る</button>
+        </div>
+      </section>
+    </main>
+
+    <audio id="correctSound" src="correct.wav" preload="auto"></audio>
+    <audio id="wrongSound" src="wrong.wav" preload="auto"></audio>
+    <script src="game.js"></script>
+  </body>
+</html>
