@@ -51,7 +51,6 @@ const comboText = document.querySelector("#comboText");
 const timerText = document.querySelector("#timerText");
 const orderText = document.querySelector("#orderText");
 const customText = document.querySelector("#customText");
-const messageText = document.querySelector("#messageText");
 const ingredientButtons = document.querySelector("#ingredientButtons");
 const recipeList = document.querySelector("#recipeList");
 const feedback = document.querySelector("#feedback");
@@ -84,8 +83,7 @@ function resetGame() {
   combo = 0;
   maxCombo = 0;
   remainingTime = difficultyTimes[difficulty];
-  messageText.textContent = "";
-  feedback.classList.remove("show");
+  hideFeedback();
   startTimer();
   updateView();
 }
@@ -144,13 +142,11 @@ function serveDrink() {
     maxCombo = Math.max(maxCombo, combo);
     score += combo;
     remainingTime += 1;
-    messageText.textContent = `正解！ コンボ x${combo} +1秒`;
-    showFeedback(combo >= 2 ? "Combo!" : "Good!", "rgb(40, 130, 70)");
+    showFeedback(`正解！ コンボ x${combo} +1秒`, "rgb(40, 130, 70)");
     playSound(correctSound);
   } else {
     combo = 0;
-    messageText.textContent = "ちがうよ！";
-    showFeedback("Miss!", "rgb(190, 55, 45)");
+    showFeedback("ちがうよ！", "rgb(190, 55, 45)");
     playSound(wrongSound);
   }
 
@@ -167,6 +163,7 @@ function playSound(sound) {
 function showFeedback(text, color) {
   feedback.textContent = text;
   feedback.style.color = color;
+  feedback.classList.remove("hidden");
   feedback.classList.add("show");
 
   if (feedbackTimerId !== null) {
@@ -174,9 +171,19 @@ function showFeedback(text, color) {
   }
 
   feedbackTimerId = setTimeout(() => {
-    feedback.classList.remove("show");
-    feedbackTimerId = null;
+    hideFeedback();
   }, 850);
+}
+
+function hideFeedback() {
+  feedback.classList.remove("show");
+  feedback.classList.add("hidden");
+  feedback.textContent = "";
+
+  if (feedbackTimerId !== null) {
+    clearTimeout(feedbackTimerId);
+    feedbackTimerId = null;
+  }
 }
 
 function showResult() {
@@ -271,7 +278,7 @@ document.querySelector("#titleBackButton").addEventListener("click", () => showS
 document.querySelector("#serveButton").addEventListener("click", serveDrink);
 document.querySelector("#resetButton").addEventListener("click", () => {
   selectedIngredients = [];
-  messageText.textContent = "材料をリセットしました";
+  showFeedback("材料をリセットしました", "rgb(125, 116, 107)");
   updateView();
 });
 

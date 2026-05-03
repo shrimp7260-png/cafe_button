@@ -145,7 +145,7 @@ h2 {
   align-content: start;
   gap: 3px;
   height: auto;
-  min-height: 96px;
+  min-height: 76px;
   padding: 7px 10px;
   text-align: center;
 }
@@ -159,13 +159,6 @@ h2 {
 .custom-text {
   font-size: 13px;
   line-height: 1.2;
-}
-
-.message {
-  min-height: 18px;
-  font-size: 12px;
-  line-height: 1.25;
-  overflow-wrap: anywhere;
 }
 
 .operation-panel {
@@ -349,8 +342,10 @@ h2 {
 }
 
 .feedback {
+  position: static !important;
+  z-index: auto !important;
   display: grid;
-  min-height: 24px;
+  min-height: 25px;
   place-items: center;
   border: 2px solid currentColor;
   border-radius: 8px;
@@ -359,6 +354,8 @@ h2 {
   padding: 3px 10px;
   font-size: 14px;
   line-height: 1.1;
+  text-align: center;
+  transform: none !important;
   opacity: 0;
   pointer-events: none;
   transition: opacity 120ms ease;
@@ -392,7 +389,7 @@ h2 {
 
   .order-panel {
     height: auto;
-    min-height: 86px;
+    min-height: 68px;
     padding: 6px 8px;
   }
 
@@ -402,11 +399,6 @@ h2 {
 
   .custom-text {
     font-size: 12px;
-  }
-
-  .message {
-    min-height: 16px;
-    font-size: 11px;
   }
 
   .feedback {
