@@ -60,7 +60,8 @@ const correctSound = document.querySelector("#correctSound");
 const wrongSound = document.querySelector("#wrongSound");
 
 function setAppHeight() {
-  document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+  const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  document.documentElement.style.setProperty("--app-height", `${height}px`);
 }
 
 function randomItem(items) {
@@ -279,6 +280,10 @@ document.querySelectorAll(".difficulty-button").forEach((button) => {
 
 window.addEventListener("resize", setAppHeight);
 window.addEventListener("orientationchange", setAppHeight);
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", setAppHeight);
+}
 
 setAppHeight();
 renderRecipeList();
