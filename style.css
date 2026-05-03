@@ -268,12 +268,12 @@ h2 {
   grid-template-columns: 28px 1fr;
   gap: 8px;
   align-items: start;
-  height: 112px;
-  min-height: 112px;
+  height: auto;
+  min-height: 132px;
   padding: 8px;
   background: var(--recipe-panel);
   color: var(--recipe-text);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .recipe-panel h2 {
@@ -286,8 +286,8 @@ h2 {
 .recipe-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 7px 8px;
-  min-height: 0;
+  gap: 8px;
+  min-height: 112px;
 }
 
 .recipe-row {
@@ -296,6 +296,7 @@ h2 {
   gap: 4px;
   align-items: start;
   min-width: 0;
+  min-height: 48px;
   font-size: 11px;
   line-height: 1.15;
 }
@@ -315,8 +316,8 @@ h2 {
 .recipe-chip {
   display: inline-flex;
   align-items: center;
-  min-height: 17px;
-  padding: 2px 5px;
+  min-height: 18px;
+  padding: 2px 5px 3px;
   border: 1px solid rgba(255, 245, 230, 0.45);
   border-radius: 6px;
   color: var(--text);
@@ -412,17 +413,19 @@ h2 {
   }
 
   .recipe-panel {
-    height: 102px;
-    min-height: 102px;
+    height: auto;
+    min-height: 118px;
     gap: 7px;
+    overflow: visible;
   }
 
   .recipe-row {
+    min-height: 44px;
     font-size: 10px;
   }
 
   .recipe-chip {
-    min-height: 16px;
-    padding: 1px 4px;
+    min-height: 17px;
+    padding: 2px 4px;
   }
 }
