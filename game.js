@@ -163,7 +163,6 @@ function playSound(sound) {
 function showFeedback(text, color) {
   feedback.textContent = text;
   feedback.style.color = color;
-  feedback.classList.remove("hidden");
   feedback.classList.add("show");
 
   if (feedbackTimerId !== null) {
@@ -177,7 +176,6 @@ function showFeedback(text, color) {
 
 function hideFeedback() {
   feedback.classList.remove("show");
-  feedback.classList.add("hidden");
   feedback.textContent = "";
 
   if (feedbackTimerId !== null) {
