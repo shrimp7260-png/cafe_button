@@ -201,7 +201,7 @@ function renderIngredientButtons() {
     const button = document.createElement("button");
     button.className = "ingredient-button";
     button.textContent = name;
-    button.style.color = ingredientColors[name];
+    button.style.setProperty("--ingredient-color", ingredientColors[name]);
 
     if (name === "エスプレッソ" || name === "チョコ") {
       button.classList.add("dark-text");
@@ -257,8 +257,10 @@ function renderRecipeList() {
       }
 
       const colored = document.createElement("span");
+      colored.className = "recipe-chip";
       colored.textContent = ingredient;
-      colored.style.color = ingredientColors[ingredient];
+      colored.style.background = ingredientColors[ingredient];
+      colored.style.color = ingredient === "エスプレッソ" || ingredient === "チョコ" ? "white" : "rgb(35, 28, 22)";
       ingredients.appendChild(colored);
     });
 
