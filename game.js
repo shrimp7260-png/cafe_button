@@ -36,6 +36,7 @@ let combo = 0;
 let maxCombo = 0;
 let remainingTime = difficultyTimes[difficulty];
 let timerId = null;
+let feedbackTimerId = null;
 
 const screens = {
   title: document.querySelector("#titleScreen"),
@@ -84,6 +85,7 @@ function resetGame() {
   maxCombo = 0;
   remainingTime = difficultyTimes[difficulty];
   messageText.textContent = "";
+  feedback.classList.remove("show");
   startTimer();
   updateView();
 }
@@ -165,10 +167,15 @@ function playSound(sound) {
 function showFeedback(text, color) {
   feedback.textContent = text;
   feedback.style.color = color;
-  feedback.classList.remove("hidden");
+  feedback.classList.add("show");
 
-  setTimeout(() => {
-    feedback.classList.add("hidden");
+  if (feedbackTimerId !== null) {
+    clearTimeout(feedbackTimerId);
+  }
+
+  feedbackTimerId = setTimeout(() => {
+    feedback.classList.remove("show");
+    feedbackTimerId = null;
   }, 850);
 }
 
