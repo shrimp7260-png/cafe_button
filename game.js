@@ -51,7 +51,6 @@ const timerText = document.querySelector("#timerText");
 const orderText = document.querySelector("#orderText");
 const customText = document.querySelector("#customText");
 const messageText = document.querySelector("#messageText");
-const selectedList = document.querySelector("#selectedList");
 const ingredientButtons = document.querySelector("#ingredientButtons");
 const recipeList = document.querySelector("#recipeList");
 const feedback = document.querySelector("#feedback");
@@ -191,7 +190,6 @@ function updateView() {
     : `カスタム: ${currentCustoms.join(" + ")}`;
 
   renderIngredientButtons();
-  renderSelectedList();
 }
 
 function renderIngredientButtons() {
@@ -213,28 +211,6 @@ function renderIngredientButtons() {
 
     button.addEventListener("click", () => toggleIngredient(name));
     ingredientButtons.appendChild(button);
-  });
-}
-
-function renderSelectedList() {
-  selectedList.innerHTML = "";
-
-  if (selectedIngredients.length === 0) {
-    selectedList.textContent = "なし";
-    return;
-  }
-
-  allIngredients.forEach((name) => {
-    if (!selectedIngredients.includes(name)) {
-      return;
-    }
-
-    const chip = document.createElement("span");
-    chip.className = "chip";
-    chip.textContent = name;
-    chip.style.background = ingredientColors[name];
-    chip.style.color = name === "エスプレッソ" || name === "チョコ" ? "white" : "rgb(35, 28, 22)";
-    selectedList.appendChild(chip);
   });
 }
 
