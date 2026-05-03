@@ -86,7 +86,7 @@ button {
 .game-screen {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 h1,
@@ -108,8 +108,8 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
-  min-height: 46px;
-  padding: 6px;
+  min-height: 42px;
+  padding: 5px;
   border: 2px solid var(--border);
   border-radius: 8px;
   background: var(--card);
@@ -132,7 +132,7 @@ h2 {
 }
 
 .top-bar strong {
-  font-size: 21px;
+  font-size: 19px;
   line-height: 1;
 }
 
@@ -143,27 +143,27 @@ h2 {
 .order-panel {
   display: grid;
   align-content: start;
-  gap: 2px;
-  height: 74px;
-  min-height: 74px;
-  padding: 6px 9px;
+  gap: 1px;
+  height: 62px;
+  min-height: 62px;
+  padding: 5px 9px;
   text-align: center;
 }
 
 .order-name {
   margin-top: 1px;
-  font-size: 23px;
+  font-size: 20px;
   line-height: 1.1;
 }
 
 .custom-text {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.1;
 }
 
 .message {
-  min-height: 14px;
-  font-size: 12px;
+  min-height: 12px;
+  font-size: 11px;
   line-height: 1.1;
 }
 
@@ -179,7 +179,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
 }
 
 .ingredient-scroll {
@@ -193,7 +193,7 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: repeat(4, minmax(0, 1fr));
   height: 100%;
-  gap: 9px;
+  gap: 7px;
 }
 
 .ingredient-button {
@@ -206,7 +206,7 @@ h2 {
   background: var(--button);
   box-shadow: 3px 3px 0 var(--shadow);
   color: white;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.1;
   text-shadow: none;
 }
@@ -233,12 +233,12 @@ h2 {
   display: grid;
   grid-template-columns: 1.25fr 1fr;
   gap: 8px;
-  margin-top: 7px;
+  margin-top: 6px;
 }
 
 .action-button,
 .difficulty-button {
-  min-height: 50px;
+  min-height: 44px;
   border-radius: 8px;
   box-shadow: 3px 3px 0 var(--shadow);
   font-size: 21px;
@@ -265,11 +265,12 @@ h2 {
 
 .recipe-panel {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: 44px 1fr;
   gap: 6px;
-  height: 118px;
-  min-height: 118px;
-  padding: 8px;
+  align-items: start;
+  height: 88px;
+  min-height: 88px;
+  padding: 7px;
   background: var(--recipe-panel);
   color: var(--recipe-text);
   overflow: hidden;
@@ -278,18 +279,18 @@ h2 {
 .recipe-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px;
+  gap: 4px 6px;
   min-height: 0;
 }
 
 .recipe-row {
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 4px;
+  gap: 2px;
   align-items: start;
   min-width: 0;
-  font-size: 11.5px;
-  line-height: 1.15;
+  font-size: 10.5px;
+  line-height: 1.08;
 }
 
 .recipe-row > span:first-child {
@@ -307,8 +308,8 @@ h2 {
 .recipe-chip {
   display: inline-flex;
   align-items: center;
-  min-height: 18px;
-  padding: 2px 5px;
+  min-height: 16px;
+  padding: 1px 4px;
   border: 1px solid rgba(255, 245, 230, 0.45);
   border-radius: 6px;
   color: var(--text);
@@ -358,7 +359,7 @@ h2 {
   }
 
   .game-screen {
-    gap: 5px;
+    gap: 4px;
   }
 
   .panel {
@@ -366,40 +367,40 @@ h2 {
   }
 
   .top-bar {
-    min-height: 40px;
-    padding: 5px;
+    min-height: 38px;
+    padding: 4px;
   }
 
   .top-bar strong {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .order-panel {
-    height: 64px;
-    min-height: 64px;
-    padding: 5px 7px;
+    height: 56px;
+    min-height: 56px;
+    padding: 4px 7px;
   }
 
   .order-name {
-    font-size: 19px;
+    font-size: 18px;
   }
 
   .ingredient-button {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .action-button {
-    min-height: 46px;
-    font-size: 19px;
+    min-height: 40px;
+    font-size: 18px;
   }
 
   .recipe-panel {
-    height: 106px;
-    min-height: 106px;
-    gap: 4px;
+    height: 78px;
+    min-height: 78px;
+    gap: 5px;
   }
 
   .recipe-row {
-    font-size: 10.5px;
+    font-size: 9.5px;
   }
 }
