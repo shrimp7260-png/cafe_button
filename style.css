@@ -88,21 +88,22 @@ h2 {
 }
 
 .title-screen {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title-panel {
   width: 100%;
   display: grid;
-  gap: 13px;
-  text-align: center;
+  gap: 12px;
+  text-align: left;
 }
 
 .title-panel::before {
   display: grid;
   place-items: center;
-  justify-self: center;
+  justify-self: start;
   width: 82px;
   height: 82px;
   border-radius: 8px;
@@ -114,8 +115,20 @@ h2 {
 }
 
 .title-panel p {
-  color: var(--muted);
+  color: var(--orange-dark);
+  font-weight: 900;
   line-height: 1.45;
+}
+
+.title-panel h1 {
+  margin-bottom: 8px;
+}
+
+.title-screen > .title-panel.panel {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
 }
 
 .panel {
@@ -344,11 +357,15 @@ h2 {
 }
 
 .normal {
-  background: var(--brown);
+  background: #fff;
+  border: 2px solid var(--line);
+  color: var(--ink);
 }
 
 .reset {
-  background: var(--gray);
+  background: #fff;
+  border: 2px solid var(--line);
+  color: var(--ink);
 }
 
 .ingredient-button:active,
@@ -365,12 +382,16 @@ h2 {
 }
 
 .difficulty-button {
-  background: var(--brown);
+  background: #fff;
+  border: 2px solid var(--line);
+  color: var(--ink);
   font-size: 0.95rem;
 }
 
 .difficulty-button.active {
   background: var(--green);
+  border-color: var(--green);
+  color: #fff;
 }
 
 .rule-panel {
@@ -378,7 +399,7 @@ h2 {
 }
 
 .rule-panel h1 {
-  text-align: center;
+  text-align: left;
 }
 
 .feedback {
