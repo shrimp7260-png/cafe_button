@@ -1,19 +1,19 @@
 :root {
   --app-height: 100vh;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
-  --cream: #fff4df;
-  --paper: #fffdf8;
-  --ink: #33251c;
-  --muted: #826a58;
-  --line: #e8c9a2;
-  --orange: #f47d2b;
-  --orange-dark: #bc4f18;
-  --brown: #7b4727;
-  --green: #2caf68;
-  --blue: #2f80c9;
+  --cream: #f6efe2;
+  --paper: #fffaf1;
+  --ink: #30251d;
+  --muted: #7b6b5b;
+  --line: #d9c1a5;
+  --coffee: #6f452b;
+  --coffee-dark: #4f301f;
+  --latte: #b9875f;
+  --mint: #4f9273;
+  --milk: #fffdf7;
   --gray: #8c8176;
-  --red: #df4a32;
-  --recipe-bg: #7b4727;
+  --red: #c85142;
+  --recipe-bg: #5f3a27;
   --recipe-text: #fff7eb;
 }
 
@@ -57,7 +57,7 @@ button {
   padding: max(12px, env(safe-area-inset-top, 0px)) 14px calc(14px + var(--safe-bottom));
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(244, 125, 43, 0.2), rgba(255, 244, 223, 0) 230px),
+    linear-gradient(180deg, rgba(185, 135, 95, 0.28), rgba(246, 239, 226, 0) 230px),
     var(--cream);
 }
 
@@ -107,15 +107,15 @@ h2 {
   width: 82px;
   height: 82px;
   border-radius: 8px;
-  background: var(--orange);
-  box-shadow: 0 10px 0 var(--orange-dark);
+  background: var(--coffee);
+  box-shadow: 0 10px 0 var(--coffee-dark);
   color: #fff;
   font-size: 2.8rem;
   content: "☕";
 }
 
 .title-panel p {
-  color: var(--orange-dark);
+  color: var(--coffee);
   font-weight: 900;
   line-height: 1.45;
 }
@@ -193,7 +193,7 @@ h2 {
 
 .order-name {
   margin-top: 3px;
-  color: var(--orange-dark);
+  color: var(--coffee);
   font-size: clamp(1.75rem, 8vw, 2.55rem);
   font-weight: 950;
   line-height: 1.08;
@@ -327,7 +327,7 @@ h2 {
 
 .ingredient-button.selected {
   border-color: rgba(44, 175, 104, 0.45);
-  background: var(--green);
+  background: var(--mint);
   color: #fff;
 }
 
@@ -359,7 +359,7 @@ h2 {
 }
 
 .serve {
-  background: var(--orange);
+  background: var(--latte);
 }
 
 .normal {
@@ -395,8 +395,8 @@ h2 {
 }
 
 .difficulty-button.active {
-  background: var(--green);
-  border-color: var(--green);
+  background: var(--mint);
+  border-color: var(--mint);
   color: #fff;
 }
 
