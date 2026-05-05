@@ -1,17 +1,20 @@
 :root {
   --app-height: 100vh;
-  --background: rgb(94, 70, 52);
-  --card: rgb(250, 239, 222);
-  --recipe-panel: rgb(112, 92, 76);
-  --border: rgb(119, 86, 60);
-  --shadow: rgb(65, 48, 36);
-  --button: rgb(176, 112, 70);
-  --selected: rgb(75, 145, 98);
-  --serve: rgb(64, 119, 184);
-  --reset: rgb(125, 116, 107);
-  --text: rgb(35, 28, 22);
-  --recipe-text: rgb(255, 245, 230);
-  --danger: rgb(215, 45, 40);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --cream: #fff4df;
+  --paper: #fffdf8;
+  --ink: #33251c;
+  --muted: #826a58;
+  --line: #e8c9a2;
+  --orange: #f47d2b;
+  --orange-dark: #bc4f18;
+  --brown: #7b4727;
+  --green: #2caf68;
+  --blue: #2f80c9;
+  --gray: #8c8176;
+  --red: #df4a32;
+  --recipe-bg: #7b4727;
+  --recipe-text: #fff7eb;
 }
 
 * {
@@ -29,28 +32,33 @@ body {
 }
 
 body {
-  background: var(--background);
-  color: var(--text);
-  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
-  font-weight: 700;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
   touch-action: manipulation;
+  user-select: none;
 }
 
 button {
   border: 0;
-  color: white;
+  color: inherit;
   font: inherit;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 
 .game {
-  width: min(100%, 430px);
+  width: min(100%, 480px);
   height: 100vh;
   height: var(--app-height);
   margin: 0 auto;
-  padding: 7px 8px max(10px, env(safe-area-inset-bottom));
+  padding: max(12px, env(safe-area-inset-top, 0px)) 14px calc(14px + var(--safe-bottom));
   overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(244, 125, 43, 0.2), rgba(255, 244, 223, 0) 230px),
+    var(--cream);
 }
 
 .screen {
@@ -63,12 +71,20 @@ button {
   display: none !important;
 }
 
-.panel {
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  background: var(--card);
-  box-shadow: 2px 2px 0 var(--shadow);
-  padding: 8px;
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.45rem, 12vw, 3.55rem);
+  line-height: 1.02;
+}
+
+h2 {
+  font-size: 0.98rem;
+  line-height: 1;
 }
 
 .title-screen {
@@ -79,201 +95,119 @@ button {
 .title-panel {
   width: 100%;
   display: grid;
-  gap: 12px;
+  gap: 13px;
   text-align: center;
 }
 
+.title-panel::before {
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  width: 82px;
+  height: 82px;
+  border-radius: 8px;
+  background: var(--orange);
+  box-shadow: 0 10px 0 var(--orange-dark);
+  color: #fff;
+  font-size: 2.8rem;
+  content: "☕";
+}
+
+.title-panel p {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.panel {
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 0 5px 0 rgba(123, 71, 39, 0.14);
+  padding: 10px;
+}
+
 .game-screen {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-h1,
-h2,
-p {
-  margin: 0;
-}
-
-h1 {
-  font-size: clamp(36px, 12vw, 56px);
-}
-
-h2 {
-  font-size: 15px;
-  line-height: 1;
+  display: grid;
+  grid-template-rows: auto auto minmax(118px, auto) minmax(0, 1fr) auto;
+  gap: 8px;
 }
 
 .top-bar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  min-height: 40px;
-  padding: 4px 6px;
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  background: var(--card);
-  box-shadow: 2px 2px 0 var(--shadow);
+  gap: 8px;
   text-align: center;
 }
 
 .top-bar div {
   display: grid;
   align-content: center;
-  gap: 1px;
+  min-height: 54px;
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  padding: 7px 4px;
 }
 
 .label,
 .mini-title,
 .section-head span {
-  font-size: 11px;
+  display: block;
+  color: var(--muted);
+  font-size: 0.73rem;
+  font-weight: 900;
   line-height: 1;
-  opacity: 0.8;
 }
 
 .top-bar strong {
-  font-size: 18px;
-  line-height: 1;
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.08;
 }
 
 .timer-danger {
-  color: var(--danger);
+  color: var(--red);
 }
 
 .order-panel {
   display: grid;
-  align-content: start;
-  gap: 3px;
-  height: auto;
-  min-height: 76px;
-  padding: 7px 10px;
+  align-content: center;
+  gap: 5px;
+  min-height: 92px;
+  border-color: #efbd83;
   text-align: center;
 }
 
 .order-name {
-  margin-top: 2px;
-  font-size: 22px;
-  line-height: 1.15;
+  margin-top: 3px;
+  color: var(--orange-dark);
+  font-size: clamp(1.75rem, 8vw, 2.55rem);
+  font-weight: 950;
+  line-height: 1.08;
 }
 
 .custom-text {
-  font-size: 13px;
-  line-height: 1.2;
-}
-
-.operation-panel {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  min-height: 0;
-  flex: 0 0 auto;
-  overflow: hidden;
-}
-
-.section-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
-
-.ingredient-scroll {
-  min-height: 0;
-  overflow: hidden;
-  padding: 1px 0 2px;
-}
-
-.ingredient-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(4, 50px);
-  gap: 7px 8px;
-}
-
-.ingredient-button {
-  position: relative;
-  overflow: hidden;
-  min-height: 0;
-  height: 50px;
-  padding: 8px 6px 4px;
-  border-radius: 8px;
-  background: rgb(186, 118, 72);
-  box-shadow: 2px 2px 0 var(--shadow);
-  color: rgb(255, 250, 242);
-  font-size: 15px;
-  line-height: 1.1;
-  text-shadow: 0 1px 1px rgba(35, 28, 22, 0.75);
-}
-
-.ingredient-button::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 7px;
-  background: var(--ingredient-color);
-  content: "";
-}
-
-.ingredient-button.selected {
-  background: var(--selected);
-  color: white;
-}
-
-.ingredient-button.dark-text {
-  color: white;
-}
-
-.command-row {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 8px;
-  margin-top: 7px;
-}
-
-.action-button,
-.difficulty-button {
-  min-height: 42px;
-  border-radius: 8px;
-  box-shadow: 2px 2px 0 var(--shadow);
-  font-size: 19px;
-}
-
-.ingredient-button:active,
-.action-button:active,
-.difficulty-button:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--shadow);
-}
-
-.normal {
-  background: var(--button);
-}
-
-.serve {
-  background: var(--serve);
-}
-
-.reset {
-  background: var(--reset);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.25;
 }
 
 .recipe-panel {
   display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: 8px;
+  grid-template-columns: 34px 1fr;
+  gap: 9px;
   align-items: start;
-  height: auto;
-  min-height: 132px;
-  padding: 8px;
-  background: var(--recipe-panel);
+  min-height: 128px;
+  background: var(--recipe-bg);
   color: var(--recipe-text);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .recipe-panel h2 {
-  writing-mode: vertical-rl;
   justify-self: center;
-  line-height: 1;
+  writing-mode: vertical-rl;
+  color: #ffe2ba;
+  font-size: 0.96rem;
   letter-spacing: 0;
 }
 
@@ -281,22 +215,22 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
-  min-height: 112px;
+  min-height: 108px;
 }
 
 .recipe-row {
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 4px;
-  align-items: start;
   min-width: 0;
   min-height: 48px;
-  font-size: 11px;
+  font-size: 0.68rem;
   line-height: 1.15;
 }
 
 .recipe-row > span:first-child {
   overflow: hidden;
+  color: #ffe2ba;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -311,11 +245,117 @@ h2 {
   display: inline-flex;
   align-items: center;
   min-height: 18px;
-  padding: 2px 5px 3px;
-  border: 1px solid rgba(255, 245, 230, 0.45);
+  border: 1px solid rgba(255, 247, 235, 0.55);
   border-radius: 6px;
-  color: var(--text);
+  padding: 2px 5px 3px;
+  color: var(--ink);
   line-height: 1;
+}
+
+.operation-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.section-head h2 {
+  font-size: 1rem;
+}
+
+.ingredient-scroll {
+  min-height: 0;
+  overflow: hidden;
+  padding: 1px 0 2px;
+}
+
+.ingredient-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(48px, 1fr));
+  gap: 8px;
+  height: 100%;
+}
+
+.ingredient-button {
+  position: relative;
+  overflow: hidden;
+  min-height: 48px;
+  border: 2px solid rgba(123, 71, 39, 0.16);
+  border-radius: 8px;
+  background: #fff8ee;
+  box-shadow: 0 4px 0 rgba(123, 71, 39, 0.16);
+  color: var(--ink);
+  font-size: 0.98rem;
+  font-weight: 950;
+  line-height: 1.1;
+}
+
+.ingredient-button::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  background: var(--ingredient-color);
+  content: "";
+}
+
+.ingredient-button.selected {
+  border-color: rgba(44, 175, 104, 0.45);
+  background: var(--green);
+  color: #fff;
+}
+
+.ingredient-button.dark-text {
+  color: var(--ink);
+}
+
+.ingredient-button.selected.dark-text {
+  color: #fff;
+}
+
+.command-row {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 9px;
+  margin-top: 9px;
+}
+
+.action-button,
+.difficulty-button {
+  min-height: 54px;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 rgba(51, 37, 28, 0.18);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 950;
+}
+
+.serve {
+  background: var(--orange);
+}
+
+.normal {
+  background: var(--brown);
+}
+
+.reset {
+  background: var(--gray);
+}
+
+.ingredient-button:active,
+.action-button:active,
+.difficulty-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(51, 37, 28, 0.18);
 }
 
 .difficulty-row {
@@ -325,12 +365,12 @@ h2 {
 }
 
 .difficulty-button {
-  background: var(--button);
-  font-size: 16px;
+  background: var(--brown);
+  font-size: 0.95rem;
 }
 
 .difficulty-button.active {
-  background: var(--selected);
+  background: var(--green);
 }
 
 .rule-panel {
@@ -342,100 +382,95 @@ h2 {
 }
 
 .feedback {
-  position: static !important;
-  z-index: auto !important;
+  z-index: 2;
   display: grid;
-  min-height: 25px;
+  min-height: 28px;
   place-items: center;
   border: 2px solid currentColor;
   border-radius: 8px;
-  background: var(--card);
-  box-shadow: 2px 2px 0 var(--shadow);
-  padding: 3px 10px;
-  font-size: 14px;
-  line-height: 1.1;
+  background: var(--paper);
+  padding: 4px 10px;
+  font-size: 0.86rem;
+  line-height: 1.12;
   text-align: center;
-  transform: none !important;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 120ms ease;
+  transition: opacity 120ms ease, transform 120ms ease;
 }
 
 .feedback.show {
   opacity: 1;
+  transform: translateY(-1px);
 }
 
 @media (max-height: 690px) {
   .game {
-    padding: 5px 7px max(8px, env(safe-area-inset-bottom));
+    padding: 8px 10px calc(8px + var(--safe-bottom));
   }
 
   .game-screen {
-    gap: 5px;
+    grid-template-rows: auto auto minmax(104px, auto) minmax(0, 1fr) auto;
+    gap: 6px;
   }
 
   .panel {
-    padding: 7px;
+    padding: 8px;
   }
 
-  .top-bar {
-    min-height: 36px;
-    padding: 4px;
+  .top-bar div {
+    min-height: 44px;
+    padding: 5px 4px;
   }
 
   .top-bar strong {
-    font-size: 17px;
+    font-size: 1.18rem;
   }
 
   .order-panel {
-    height: auto;
-    min-height: 68px;
-    padding: 6px 8px;
+    min-height: 76px;
   }
 
   .order-name {
-    font-size: 20px;
+    font-size: 1.45rem;
   }
 
   .custom-text {
-    font-size: 12px;
-  }
-
-  .feedback {
-    min-height: 21px;
-    padding: 2px 8px;
-    font-size: 12px;
-  }
-
-  .ingredient-button {
-    height: 44px;
-    font-size: 14px;
-  }
-
-  .ingredient-grid {
-    grid-template-rows: repeat(4, 44px);
-    gap: 6px 7px;
-  }
-
-  .action-button {
-    min-height: 38px;
-    font-size: 17px;
+    font-size: 0.78rem;
   }
 
   .recipe-panel {
-    height: auto;
-    min-height: 118px;
-    gap: 7px;
-    overflow: visible;
+    min-height: 112px;
+  }
+
+  .recipe-list {
+    min-height: 94px;
+    gap: 6px;
   }
 
   .recipe-row {
-    min-height: 44px;
-    font-size: 10px;
+    min-height: 42px;
+    font-size: 0.62rem;
   }
 
-  .recipe-chip {
-    min-height: 17px;
-    padding: 2px 4px;
+  .ingredient-grid {
+    grid-template-rows: repeat(4, minmax(42px, 1fr));
+    gap: 6px;
+  }
+
+  .ingredient-button {
+    min-height: 42px;
+    font-size: 0.86rem;
+  }
+
+  .action-button,
+  .difficulty-button {
+    min-height: 44px;
+    font-size: 0.96rem;
+  }
+
+  .feedback {
+    min-height: 23px;
+    padding: 2px 8px;
+    font-size: 0.76rem;
   }
 }
